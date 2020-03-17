@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
  * @date 2020/3/16 9:49
  */
 public class ProxyInvocationhandler implements InvocationHandler {
-    private RentHouse rentHouse;
+    private Object rentHouse;
 
     public void setRentHouse(RentHouse rentHouse) {
         this.rentHouse = rentHouse;
