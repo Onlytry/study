@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aspect="http://www.springframework.org/schema/aop"
+       xmlns:content="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+      <!--  <aop:config>
+&lt;!&ndash;            先声明切点&ndash;&gt;
+            <aop:pointcut id="aspect" expression="execution(* org.example.*.*(..) )"/>
+&lt;!&ndash;在申明切入面&ndash;&gt;
+            <aop:aspect  ref="service">
+                <aop:before method="service" pointcut-ref="aspect"/>
+                <aop:after method="after" pointcut-ref="aspect" />
+            </aop:aspect>
+        </aop:config>-->
+    <!--<aop:aspectj-autoproxy/>
+    <bean class="org.example.TestAop" id="testAop"></bean>
+    <bean class="org.example.service.MyService" id="service"/>-->
+<context:annotation-config/>
+    <aop:config >
+        <aop:pointcut id="service" expression="execution(* com.dz.spring.*.*(..))"/>
+        <aop:aspect ref="log" >
+           <aop:before method="before" pointcut-ref="service" ></aop:before>
+            <aop:after method="after" pointcut-ref="service"></aop:after>
+        </aop:aspect>
+
+    </aop:config>
+    <bean class="com.dz.spring.Log" id="log"></bean>
+    
+
+</beans>
